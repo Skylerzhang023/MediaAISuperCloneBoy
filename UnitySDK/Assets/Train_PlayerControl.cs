@@ -72,7 +72,7 @@ public class Train_PlayerControl : MonoBehaviour
             StopAllCoroutines();
             rb.isKinematic = false;
             input = Vector3.zero;
-            input.x = Input.GetAxis("Horizontal");
+            //input.x = Input.GetAxis("Horizontal");
 
             IsGrounded = OnGround();
             Debug.Log("Ground: " + IsGrounded);
@@ -99,11 +99,11 @@ public class Train_PlayerControl : MonoBehaviour
                 transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, -lookDirection * 90.0f, transform.eulerAngles.z);
             }
 
-            //if (Input.GetKeyDown(KeyCode.Joystick1Button17) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1))
-            //{
-             //   jumping = 1;
+            if (Input.GetKeyDown(KeyCode.Joystick1Button17) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+            {
+                //jumping = 1;
                 //characterAnimator.SetTrigger("Jumping");
-           // }
+            }
 
             // Debug.Log(input.x);
 
@@ -287,7 +287,19 @@ public class Train_PlayerControl : MonoBehaviour
         }
         else return false;
     }
+    //functions below only for trainning
+    public void move(float direction)
+    {
+        input.x = direction;
+    }
+    public void jump()
+    {
+        jumping = 1;
+    }
+
 }
+
+
 
 /* 
 void OnCollisionStay(Collision collision){
